@@ -1,5 +1,5 @@
-//type toggle, input, select, search
 #!/usr/bin/env node
+
 process.stdin.setEncoding('utf8');
 
 var content = {
