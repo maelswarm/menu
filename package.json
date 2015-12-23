@@ -1,6 +1,6 @@
 {
   "name": "menu",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "Brandon Barber (@roecrew)",
   "license": "MIT",
   "description": "A terminal menu for your node.",
@@ -17,6 +17,6 @@
 	],
 	"dependencies": {
 		"keypress": "*",
-		"cheerio": "*"
+		"clivas": "*"
 	}
 }
