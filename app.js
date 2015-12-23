@@ -1,4 +1,6 @@
 //type toggle, input, select, search
+#!/usr/bin/env node
+process.stdin.setEncoding('utf8');
 
 var content = {
 		col1: {title:"column1", seltitle: "COLUMN1", type:"toggle", val:"true", color:"blue"},
