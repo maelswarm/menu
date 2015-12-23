@@ -14,13 +14,18 @@ var options;
 var menu = require('./index.js');
 menu.columns = content;
 menu.init();
-function go() {
+
+function work() {
 	menu.start(options, function(result) {
-		if(result[0].ctrl && result[0].name ==="c") {
+		var key = result[0];
+		var column = result[1];
+		
+		if(key.name=="return" && column.type == "search") {
+			console.log("\n"+column.val+" was entered!")
+		}
+		
+		if(key.ctrl && key.name ==="c") {
 			process.exit();
 		}
 	})
-}
-go();
-
-//console.log(content.col1.title)
+} work();

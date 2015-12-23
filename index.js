@@ -2,7 +2,7 @@ var clivas = require('clivas')
 var keypress = require('keypress')
 keypress(process.stdin);
 
-var inputStr = ""
+var inputStr = "";
 
 var currentCol;
 var currentSel;
@@ -12,46 +12,29 @@ idx.column_cnt = 0;
 idx.column_val = 1000;
 
 idx.init = function() {
-	//console.log(idx.columns);
-	for(var item in idx.columns) {
-		//console.log(item);
-		for(var item1 in item) {
-			//console.log(item1);
-		}
+	for(var key in idx.columns) {
 		idx.column_cnt++;
+		if(idx.columns[key].type == "list") {
+			var tmp = idx.columns[key].val.length
+			idx.columns[key].input = tmp*tmp;
+		} else if(idx.columns[key].type == "select") {
+			var tmp = idx.columns[key].val.length
+			idx.columns[key].input = -1*tmp*tmp;
+		} else if(idx.columns[key].type == "search") {
+			var tmp = idx.columns[key].title.length;
+			idx.columns[key].input = tmp*tmp;
+		}
 	}
 	draw();
 }
 
-function draw() {
-
-	process.stdout.clearLine();
-	process.stdout.cursorTo(0);
-	clivas.clear()
-	clivas.line("{bold:┎──────────────────────────────────────────────────────────────────────────────────────────────────────────────────}")
-	//console.log(idx.columns);
-
-
-
-//	for (var key in idx.columns) {
-//	if (idx.columns.hasOwnProperty(key)) {
-//	var obj = idx.columns[key];
-//	for (var prop in obj) {
-//	if(obj.hasOwnProperty(prop)){
-//	clivas.line(prop + " = " + obj[prop]);
-//	}
-//	}
-//	}
-//	}
-
-
-	clivas.write("{bold:┃ }");
+function header_tab() {
 	var cnt = 0;
 	var modul = idx.column_val%idx.column_cnt;
 	for(var key in idx.columns) {
 		if(cnt === modul-1) {
 			if(idx.columns[key].type === "search") {
-				var i = Math.abs(idx.columns[key].input%idx.columns[key].val.length);
+				var i = idx.columns[key].input%idx.columns[key].title.length;
 				clivas.write("{bold+"+idx.columns[key].color+":"+idx.columns[key].title[i]+" }");
 				clivas.write("{bold:┃ }");
 			} else {
@@ -76,7 +59,8 @@ function draw() {
 			clivas.write("{bold:┃ }");
 		} else {
 			if(idx.columns[key].type === "search") {
-				var i = Math.abs(idx.columns[key].input%idx.columns[key].val.length);
+				var i = idx.columns[key].input%idx.columns[key].title.length;
+				
 				clivas.write("{bold+"+idx.columns[key].color+":"+idx.columns[key].title[i]+" }");
 				clivas.write("{bold:│ }");
 			} else {
@@ -86,9 +70,19 @@ function draw() {
 		}
 		cnt++;
 	}
+}
+
+function draw() {
+
+	process.stdout.clearLine();
+	process.stdout.cursorTo(0);
+	clivas.clear()
+	clivas.line("{bold:┎──────────────────────────────────────────────────────────────────────────────────────────────────────────────────}")
+	clivas.write("{bold:┃ }");
+	header_tab();
 	clivas.line("")
 	clivas.line("{bold:┠──────────────────────────────────────────────────────────────────────────────────────────────────────────────────}")
-	
+
 	if(currentSel !== undefined) {
 		var x = Math.abs(currentSel.input%currentSel.val.length);
 		for(var i=0; i<currentSel.val.length; i++) {
@@ -100,9 +94,9 @@ function draw() {
 			}
 		}
 	}
-	
+
 	clivas.line("{bold:┖──────────────────────────────────────────────────────────────────────────────────────────────────────────────────}")
-	
+
 	clivas.line("");
 	if(currentCol.type === "toggle") {
 	} else if(currentCol.type === "search") {
