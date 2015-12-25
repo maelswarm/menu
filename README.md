@@ -9,6 +9,8 @@ A cli menu for your node.
 npm install menu
 ```
 
+![ScreenShot1](http://s23.postimg.org/l4zi60cuj/Screen_Shot_2015_04_03_at_19_02_29.png)
+
 ## API ##
 ####Tabs####
 Menu is built around tabs. <br><br>
