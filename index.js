@@ -6,12 +6,14 @@ var inputStr = "";
 
 var currentCol;
 var currentSel;
+
 var idx = module.exports = {};
 idx.columns;
 idx.column_cnt = 0;
 idx.column_val = 1000;
 
-idx.init = function() {
+idx.init = function(cols) {
+	idx.columns = cols;
 	for(var key in idx.columns) {
 		idx.column_cnt++;
 		if(idx.columns[key].type == "list") {
@@ -102,7 +104,7 @@ function draw() {
 	} else if(currentCol.type === "search") {
 		process.stdout.clearLine()
 		process.stdout.cursorTo(0)
-		process.stdout.write(" Search:"+ currentCol.val)
+		process.stdout.write(" Input:"+ currentCol.val)
 	} else if(currentCol.type === "list") {
 	}
 }
