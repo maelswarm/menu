@@ -46,11 +46,12 @@ color: The tab's set color. Look at the node **clivas** for all possible values.
 
     function work() {
         menu.start(options, function(result) {
-            var key = result[0]; //refer to node keypress for all properties
-            var column = result[1]; //the focused tab
+            var key = result[0]; 								//refer to node keypress for all properties
+            var column = result[1]; 							//the focused tab
+            
             if(key.name=="return" && column.type == "search") {
                 console.log("\n"+column.val+" was entered!")
-            } else if(key.ctrl && key.name ==="c") { //always include this!
+            } else if(key.ctrl && key.name ==="c") { 			//always include this so you can exit!
                 process.exit();
             }
         })
