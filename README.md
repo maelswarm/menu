@@ -8,18 +8,14 @@ A cli menu for your node.
 npm install menu
 ```
 
-## Usage ##
-
-An example node is app.js.
-
 ## API ##
-
+####Tabs####
 Menu is built around tabs. <br><br>
 There are currently four types: <br>
-  * Toggle: This tab functions like a button. 
-  * List: This tab selects a single value from its list. 
-  * Search: This tab takes a string input, and has the function of a list tab.
-  * Select: This tab creates a selectable drop-down list.
+  * **Toggle**: This tab functions like a button. 
+  * **List**: This tab selects a single value from its list. 
+  * **Search**: This tab takes a string input, and has the function of a list tab.
+  * **Select**: This tab creates a selectable drop-down list.
 <br>
 	
 These tabs are declared as such...
@@ -31,5 +27,11 @@ These tabs are declared as such...
     	tab4: {title:"column4", seltitle: "COLUMN4", type:"select", input: 0, val:["1","2","3","4","5","6"], color:"green"}
     }
 
+####Properties####
 
-TODO
+title: This is the tabs label when it's not focused.<br>
+seltitle: This is the tabs label when it is focused.<br>
+type: This is the tab's type.<br>
+input: A value used for types search, list, and select. For types **list** and **select**, this value is used as a dividend when calculating the current val property (input%val.length = index of property val). For a tab of type **search**, it's used similiarly, calculating the index of the current title/seltitle.<br>
+val: For type **toggle**, it's a boolean value. For types **list** and **select**, it's an array of values. Lastly, for type **search** it's a string.<br>
+color: The tab's set color. Look at the node **clivas** for all possible values.
