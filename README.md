@@ -3,6 +3,7 @@
 A cli menu for your node.
 
 ## Install ##
+![platform alt](https://img.shields.io/badge/platform-windows%20|%20linux%20|%20osx-blue.svg)
 
 ```
 npm install menu
@@ -35,3 +36,22 @@ type: This is the tab's type.<br>
 input: A value used for types search, list, and select. For types **list** and **select**, this value is used as a dividend when calculating the current val property (input%val.length = index of property val). For a tab of type **search**, it's used similiarly, calculating the index of the current title/seltitle.<br>
 val: For type **toggle**, it's a boolean value. For types **list** and **select**, it's an array of values. Lastly, for type **search** it's a string.<br>
 color: The tab's set color. Look at the node **clivas** for all possible values.
+
+####Initialization####
+
+    var menu = require('./index.js');
+    menu.init(content);
+    
+####Delegate####
+
+    function work() {
+        menu.start(options, function(result) {
+            var key = result[0]; //refer to node keypress for all properties
+            var column = result[1]; //the focused tab
+            if(key.name=="return" && column.type == "search") {
+                console.log("\n"+column.val+" was entered!")
+            } else if(key.ctrl && key.name ==="c") { //always include this!
+                process.exit();
+            }
+        })
+    } work();
