@@ -10,7 +10,7 @@
 	"url": "git://github.com/roecrew/menu.git"
 	},
 	"bin": {
-	    "menu": "./app.js"
+	    "menu": "./example.js"
 	},
 	"keywords": [
 	    "menu"
