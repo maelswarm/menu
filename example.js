@@ -19,7 +19,7 @@ function work() {
 		var column = result[1];
 		
 		if(key.name=="return" && column.type == "search") {
-			console.log("\n"+column.val+" was entered!")
+			menu.clivas.line("\n"+column.val+" was entered!")
 		}
 		
 		if(key.ctrl && key.name ==="c") {

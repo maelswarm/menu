@@ -8,6 +8,7 @@ var currentCol;
 var currentSel;
 
 var idx = module.exports = {};
+idx.clivas = clivas;
 idx.columns;
 idx.column_cnt = 0;
 idx.column_val = 1000;
@@ -75,7 +76,7 @@ function header_tab() {
 }
 
 function draw() {
-
+	
 	process.stdout.clearLine();
 	process.stdout.cursorTo(0);
 	clivas.clear()
@@ -207,7 +208,7 @@ idx.start = function(params, callback) {
 				process.stdout.cursorTo(0)
 				process.stdout.write(" Search:"+ currentCol.val)
 			}
-			callback([key, currentCol]);
+			callback([key, currentCol, clivas]);
 		}
 	})
 }
