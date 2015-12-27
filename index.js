@@ -2,8 +2,6 @@ var clivas = require('clivas')
 var keypress = require('keypress')
 keypress(process.stdin);
 
-var inputStr = "";
-
 var currentCol;
 var currentSel;
 
@@ -119,14 +117,10 @@ idx.start = function(params, callback) {
 		}
 		else if(key.name == "right") {
 			idx.column_val++;
-
-			
 			callback([key, currentCol]);
 		}
 		else if(key.name == "left") {
 			idx.column_val--;
-
-			
 			callback([key, currentCol]);
 		}
 		else if(key.name == "up") {

@@ -1,6 +1,6 @@
 {
   "name": "menu",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "author": "Brandon Barber (@roecrew)",
   "license": "MIT",
   "description": "A terminal menu for your node.",
