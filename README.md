@@ -3,6 +3,7 @@
 A cli menu for your node.
 
 ## Install ##
+![build alt](https://travis-ci.org/roecrew/menu.svg?branch=master)
 ![platform alt](https://img.shields.io/badge/platform-windows%20|%20linux%20|%20osx-blue.svg)
 
 ```
