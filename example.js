@@ -19,11 +19,22 @@ function work() {
 		var column = result[1];
 		
 		if(key.name=="return" && column.type == "search") {
+			menu.draw();
 			menu.clivas.line("\n"+column.val+" was entered!")
-		}
-		
-		if(key.ctrl && key.name ==="c") {
+		} else if(key.ctrl && key.name ==="c") {
 			process.exit();
+		} else if(key.name ==="backspace") {
+			menu.draw();
+		} else if(key.name ==="left") {
+			menu.draw();
+		} else if(key.name ==="up") {
+			menu.draw();
+		} else if(key.name ==="down") {
+			menu.draw();
+		} else if(key.name ==="right") {
+			menu.draw();
+		} else {
+			menu.draw();
 		}
 	})
 } work();

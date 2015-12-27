@@ -28,7 +28,7 @@ idx.init = function(cols) {
 			idx.columns[key].input = tmp*tmp;
 		}
 	}
-	draw();
+	idx.draw();
 }
 
 function header_tab() {
@@ -75,7 +75,7 @@ function header_tab() {
 	}
 }
 
-function draw() {
+idx.draw = function() {
 	
 	process.stdout.clearLine();
 	process.stdout.cursorTo(0);
@@ -120,13 +120,13 @@ idx.start = function(params, callback) {
 		else if(key.name == "right") {
 			idx.column_val++;
 
-			draw();
+			
 			callback([key, currentCol]);
 		}
 		else if(key.name == "left") {
 			idx.column_val--;
 
-			draw();
+			
 			callback([key, currentCol]);
 		}
 		else if(key.name == "up") {
@@ -144,7 +144,7 @@ idx.start = function(params, callback) {
 			} else if(currentCol.type === "select") {
 				++currentCol.input;
 			}
-			draw();
+			
 			callback([key, currentCol]);
 		}
 		else if(key.name == "down") {
@@ -162,7 +162,7 @@ idx.start = function(params, callback) {
 			} else if(currentCol.type === "select") {
 				--currentCol.input;
 			}
-			draw();
+			
 			callback([key, currentCol]);
 		}
 		else if(key.name == "backspace") {
@@ -181,7 +181,7 @@ idx.start = function(params, callback) {
 				process.stdout.cursorTo(0)
 				process.stdout.write(" Search:"+ currentCol.val)
 			}
-			draw();
+			
 			callback([key, currentCol]);
 		}
 		else if(key.name == "return") {
@@ -194,7 +194,7 @@ idx.start = function(params, callback) {
 			} else if(currentCol.type === "list") {
 			} else if(currentCol.type === "search") {
 			}
-			draw();
+			
 			callback([key, currentCol]);
 		}
 		else {
