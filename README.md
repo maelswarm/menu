@@ -13,7 +13,7 @@ npm install menu
 ![ScreenShot1](http://s23.postimg.org/l4zi60cuj/Screen_Shot_2015_04_03_at_19_02_29.png)
 
 ## API ##
-####Tabs####
+#### Tabs
 Menu is built around tabs. <br><br>
 There are currently four types: <br>
   * **Toggle**: This tab functions like a button. 
@@ -31,7 +31,7 @@ These tabs are declared as such...
     	tab4: {title:"column4", seltitle: "COLUMN4", type:"select", input: 0, val:["1","2","3","4","5","6"], color:"green"}
     }
 
-####Properties####
+#### Properties
 
 title: This is the tabs label when it's not focused.<br>
 seltitle: This is the tabs label when it is focused.<br>
@@ -40,12 +40,12 @@ input: A value used for types search, list, and select. For types **list** and *
 val: For type **toggle**, it's a boolean value. For types **list** and **select**, it's an array of values. Lastly, for type **search** it's a string.<br>
 color: The tab's set color. Look at the node **clivas** for all possible values.
 
-####Initialization####
+#### Initialization
 
     var menu = require('./index.js');
     menu.init(content);
     
-####Delegate####
+#### Delegate
 
     function work() {
         menu.start(options, function(result) {
