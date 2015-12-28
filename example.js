@@ -21,6 +21,10 @@ function work() {
 		if(key.name=="return" && column.id === 4) {
 			menu.draw();
 			menu.clivas.line(Math.abs(column.input%column.val.length));
+		} else if(key.name=="return" && column.id === 2) {
+			menu.draw();
+			menu.clivas.line("You searched for "+column.val);
+			column.val = "";
 		} else if(key.ctrl && key.name ==="c") {
 			process.exit();
 		} else if(key.name ==="backspace") {
@@ -45,6 +49,5 @@ function work() {
 			}
 			menu.draw();
 		}
-		
 	})
 } work();

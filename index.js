@@ -17,13 +17,13 @@ idx.init = function(cols) {
 		idx.column_cnt++;
 		if(idx.columns[key].type == "list") {
 			var tmp = idx.columns[key].val.length
-			idx.columns[key].input = tmp*tmp;
+			idx.columns[key].input = tmp*tmp*tmp;
 		} else if(idx.columns[key].type == "select") {
 			var tmp = idx.columns[key].val.length
-			idx.columns[key].input = -1*tmp*tmp;
+			idx.columns[key].input = -1*tmp*tmp*tmp;
 		} else if(idx.columns[key].type == "search") {
 			var tmp = idx.columns[key].title.length;
-			idx.columns[key].input = tmp*tmp;
+			idx.columns[key].input = tmp*tmp*tmp;
 		}
 	}
 	idx.draw();
@@ -96,14 +96,10 @@ idx.draw = function() {
 		}
 	}
 
-	clivas.line("{bold:┖──────────────────────────────────────────────────────────────────────────────────────────────────────────────────}")
-
-	clivas.line("");
 	if(currentCol.type === "toggle") {
 	} else if(currentCol.type === "search") {
-		process.stdout.clearLine()
-		process.stdout.cursorTo(0)
-		process.stdout.write(" Input:"+ currentCol.val)
+		clivas.line("{bold:┖──────────────────────────────────────────────────────────────────────────────────────────────────────────────────}")
+		clivas.write(" Input:"+ currentCol.val)
 	} else if(currentCol.type === "list") {
 	}
 }
@@ -171,9 +167,7 @@ idx.start = function(params, callback) {
 
 			} else if(currentCol.type === "search") {
 				currentCol.val = currentCol.val.slice(0, currentCol.val.length-1)
-				process.stdout.clearLine()
-				process.stdout.cursorTo(0)
-				process.stdout.write(" Search:"+ currentCol.val)
+				clivas.write(" Search:"+ currentCol.val)
 			}
 			
 			callback([key, currentCol]);
@@ -198,9 +192,7 @@ idx.start = function(params, callback) {
 
 			} else if(currentCol.type === "search") {
 				currentCol.val += chunk
-				process.stdout.clearLine()
-				process.stdout.cursorTo(0)
-				process.stdout.write(" Search:"+ currentCol.val)
+				clivas.write(" Search:"+ currentCol.val)
 			}
 			callback([key, currentCol, clivas]);
 		}
